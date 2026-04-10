@@ -53,3 +53,26 @@ suma = lambda listax : list(map(lambda x:x*2, listax)) #forma sin list comprenci
 l4 = [1,2,3,4]
 print(duplic(l4))
 print(suma(l4))
+
+
+#Utilizar la función Map para aplicar una función Lambda que convierta temperatura de Celsius a Fahrenheit en una lista de temperaturas.
+
+lc = [20,30,40,24,56]
+
+convertir = lambda l1 :list(map((lambda x: (9/5*x)+32), l1))
+
+print(convertir(lc))
+
+#Aplicar la función Reduce para encontrar el producto de todos los números en una lista dada.
+from functools import reduce
+
+def multiplicar(ll):
+    return reduce(lambda x,y : x*y, ll,1)
+
+print(f"- reduce sale {int(multiplicar(lc))}")
+
+#Utilizar la función Filter para crear una nueva lista que contenga solo los números pares de una lista dada.
+import random 
+lf= [random.randint(1,100) for x in range(1,20)]
+l5 = filter(lambda x: x%2 == 0, lf)
+print(f" es filter: {list(l5)}") 
