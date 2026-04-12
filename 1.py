@@ -32,47 +32,49 @@ LIST COMPREHENSION
 FUNCION ANONIMA
 func = lambda x,y : x+y
 """
-#Utilizar una comprensión de listas para crear una nueva lista con los cuadrados delos números del 1 al 10.
-l1=[x**2 for x in range(1,11)]
-print(l1)
 
-#Dada una lista de cadenas, usar una comprensión de listas para crear una nueva listaque contenga solo las cadenas que comiencen con una vocal.
-l2=["ana", "juan", "andres", "omar", "anton"]
-l3 =[x for x in l2 if x[0]=="a"]
-print(l3)
+#---------------------------------------------------
+#inicio de clase 03 
+#aprox a mitad del curso ir definiendo tema NCP 
+print(2**5) # Potenciación
 
-#Utilizar una función lambda para crear una función que retorne el cuadrado de un número.
-function = lambda x : x**2
-print(function(3))
-print((lambda x : x**2)(5)) # directo in print
+x = -4+2*(6/(2/3)*3)
+print(x)
 
-# Aplicar una función lambda a una lista de número para duplicar cada elemento.
+# 1 byte = 8 bit
+#FF es 255, sistema hexadecimal
+#and or
+#type == ver tipo
+round(10.5) #redondeo al par o redodneo del BANQUERO 
+# solo por legibilidad se puede usar guiones bajos (_) para números grandes
+guion:str = 1_000_000.1666 #sugerencia no declaracion
+print(guion) 
+#bool(str, int, float) == True
+#sliceing
+xx = "una cadena"
+print(xx[1:6])
 
-duplic = lambda l : [x*2 for x in l]
-suma = lambda listax : list(map(lambda x:x*2, listax)) #forma sin list comprencion 
-l4 = [1,2,3,4]
-print(duplic(l4))
-print(suma(l4))
+#.strip() quita espacios y no modifica, se reasigna
 
+#.find("a") == da posicion del primer hallazgo
+#.find("a", 3) == desde el indice 3
+#.find("a", 3,9) == desde el indice 3 hasta el 9
+#.find("a", 3,4) == desde el indice 3 hasta el 4, si no hya indica -1
 
-#Utilizar la función Map para aplicar una función Lambda que convierta temperatura de Celsius a Fahrenheit en una lista de temperaturas.
+#.split()== crea una lista, con punto de quiebre del (),("a"),(","), (".\n")
 
-lc = [20,30,40,24,56]
+#.join() == inversa de split solo para str y despues asignas
+ # ojo: es un método para cadenas, no para listas, por eso el orden extraño
+mis_cursos = ["mate", "lenguaje", "ciencias"]
+concatenador = ", "
 
-convertir = lambda l1 :list(map((lambda x: (9/5*x)+32), l1))
+print(concatenador.join(mis_cursos))
 
-print(convertir(lc))
+#f-string
+# tiene aplicaciones especiales para variables numéricas
 
-#Aplicar la función Reduce para encontrar el producto de todos los números en una lista dada.
-from functools import reduce
-
-def multiplicar(ll):
-    return reduce(lambda x,y : x*y, ll,1)
-
-print(f"- reduce sale {int(multiplicar(lc))}")
-
-#Utilizar la función Filter para crear una nueva lista que contenga solo los números pares de una lista dada.
-import random 
-lf= [random.randint(1,100) for x in range(1,20)]
-l5 = filter(lambda x: x%2 == 0, lf)
-print(f" es filter: {list(l5)}") 
+x = "manzanas"
+y = "naranjas"
+precio = 4
+#precio:.2f == 4.00 == dos decimales
+print(f"las {x} cuestan {precio:.2f} soles; por lo tanto, la docena cuesta {precio*12} soles")
