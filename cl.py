@@ -8,7 +8,7 @@ class good_of_war:
     def __init__(self, name, fuerza, edad, vida, origen):
         self.name = name
         self.fuerza = fuerza
-        self.edad = edad
+        self.edad = edad  
         self.vida = vida 
         self.origen = origen
     def stadistic(self):
@@ -63,3 +63,51 @@ loki.change_arm()
 loki.presentation()
 
 #min 19.25
+
+
+#------- mañana 12/04
+
+# Clase Libro
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+
+# Clase Biblioteca
+class Library:
+    def __init__(self, books=None):
+        # Si no se pasa ninguna lista, se crea una vacía
+        if books is None:
+            self.books = []
+        else:
+            self.books = books
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def display_books(self):
+        for book in self.books:
+            print(f"{book.title} by {book.author}")
+
+
+# -------------------------------
+# Uso del código
+
+# Biblioteca vacía
+library1 = Library()
+library1.add_book(Book("1984", "George Orwell"))
+library1.add_book(Book("To Kill a Mockingbird", "Harper Lee"))
+print("Biblioteca 1:")
+library1.display_books()
+
+print("\n-----------------\n")
+
+# Biblioteca con libros iniciales
+initial_books = [
+    Book("Don Quijote", "Miguel de Cervantes"),
+    Book("Cien años de soledad", "Gabriel García Márquez")
+]
+
+library2 = Library(initial_books)
+print("Biblioteca 2:")
+library2.display_books()
