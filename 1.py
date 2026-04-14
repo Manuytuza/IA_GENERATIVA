@@ -78,3 +78,117 @@ y = "naranjas"
 precio = 4
 #precio:.2f == 4.00 == dos decimales
 print(f"las {x} cuestan {precio:.2f} soles; por lo tanto, la docena cuesta {precio*12} soles")
+
+#incio clase 13/04
+
+#tupla = (inmutable) and 1,2,3,4, se llama == listas
+# desde ... hasta justo antes de ... cada ... print(mi_lista[2:7:2])
+# invertir con [::-1] (no modifica el original), si valido en tuplas
+# .reverse() sí modifica la lista original, no tuplas
+
+# shallow copy : [:] o .copy()
+mi_lista =[1,2,3,4,5,6]
+mi_lista_c = mi_lista[:]  # similar a .copy() no afecta lista_incial, dif a solo oner =
+
+# matrices que son 
+
+# usar copy.deepcopy() para copiar todo, total independencia
+
+#copy. reverse() son metodos no funciones
+
+#x in lista, x esta en mi lista
+#.count(2) cuantas veces se repite
+#,index(1) cual es el indice de 1
+    #mi_lista_rep.index(1,9,12)) busca indice de elemnto 1 de indice9 al 11 
+ejemplo: [index for index, value in enumerate(mi_lista_rep) if value == 3] 
+
+#.append(4) agrega un elemento a listas
+mi_nueva_lista.extend([4,5,6]) #suma como append pero ams de 1 revisar
+
+#✅ list es una función (más exactamente, una clase/constructor)
+lista = list([1, 2, 3])
+
+mi_nueva_lista.insert(1, 1.5)  # (agrega por índice, valor) agrega ala izquierda dle indice dado
+
+#pop (opera con los índices)
+mi_nueva_lista.pop(1) #elimina, guarda el num y sin pop() elimna el ultimo
+
+# remove opera con elementos
+mi_nueva_lista.remove(4) # por valor (si está repetido, borra únicamente el primero)
+
+# Para colecciones en general: usar remove() o discard()
+  # remove() arroja ERROR si el elemento no existe
+  # discard() no lo hace
+
+del mi_nueva_lista[3] # (opera con índices)
+
+# clear (el objeto sobrevive, pero vacío) vs del (el objeto no sobrevive)
+mi_nueva_lista.clear()
+
+#`.sort()` para ordenar y cambia la lista
+#mi_lista.sort(reverse = True) # probar con reverse = True  para orden descendente
+
+##DICIONARIOS
+
+#dic ={"key" : "value"} no se puede repetir llaves o se reemplaza, se llama dic["key"]
+#mi_diccionario.keys()
+#mi_diccionario.values()
+#mi_diccionario.items()
+
+# sum() es función, no método #### Funciones → funcion(objeto) y Métodos → objeto.metodo()
+
+# nota: busca, si encuentra, reemplaza/actualiza; si no encuentra, crea
+mi_diccionario["Mario"] = 30
+
+## Forma 2: con .update(), actualiza datos
+mi_diccionario.update({'Ernesto': 70,
+                       'Ignacio': 90,
+                       'Juan':8})
+
+## Forma 3: con .setdefault() para evitar reemplazos no queridos si encuentra algo no aplicada nada
+mi_diccionario.setdefault('Ernesto', 40)
+
+# ... pero hay otras opciones
+print(mi_dicc.get('nombre3')) # arroja None
+print(mi_dicc.get('nombre3', 'oye, no encontré esa key')) # arroja el mensaje #####
+
+## en diccionarios: pop() necesita como argumento una key
+# en sets: pop() borra el primer item del orden de aparción (porque no están indexados)
+mi_diccionario.pop('María')
+
+###SETS desordenados, sin índice, con valores reemplazables, pero no modificables
+# set
+mi_set = {1,"dos",3,"cuatro",5}
+mi_otro_set = {1,2,3,4,5}
+# operaciones de conjuntos: operaciones en bits (bitwise operators: &, |, ^ )
+
+mi_set | mi_otro_set
+# Alternativa: set.union(mi_set , mi_otro_set)
+
+mi_set & mi_otro_set
+# Alternativa: set.intersection(mi_set , mi_otro_set)
+
+mi_set - mi_otro_set
+# Alternativa: set.difference(mi_set , mi_otro_set)
+
+mi_set ^ mi_otro_set
+# Alternativa: set.symmetric_difference(mi_set , mi_otro_set)
+
+mi_set.update(mi_otro_set)
+mi_set
+# notar: no es igual que la union (|), pues este sí modifica la variable
+
+###if elif else
+###for loop
+
+#for i in list:
+#for i in range(1,10+1): no es indice es elemento
+#Forma	¿Qué es i?
+for i in lista	Elemento
+for i in range(...)	Número (contador / posible índice)
+
+#break, continue(pasa al sigueinte for nos sigue codigo), pass (solo continua codigo) = solo para bucles for
+
+#while loop
+
+print(list(map(lambda i: "TRIPLE-QUINTO" if i%15==0 else "TRIPLE" if i%3==0 else "QUINTO" if i%5==0 else i, range(1,21))))
