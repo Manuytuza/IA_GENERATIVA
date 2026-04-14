@@ -100,10 +100,25 @@ mi_lista_c = mi_lista[:]  # similar a .copy() no afecta lista_incial, dif a solo
 #.count(2) cuantas veces se repite
 #,index(1) cual es el indice de 1
     #mi_lista_rep.index(1,9,12)) busca indice de elemnto 1 de indice9 al 11 
-ejemplo: [index for index, value in enumerate(mi_lista_rep) if value == 3] 
+mi_lista_rep =(1,2,3,3,4,56,7,7,8,9,3)
+ejemplo= [index for index, value in enumerate(mi_lista_rep) if value == 3] 
 
+print("analizando" , ejemplo)
+
+lista = ["a", "b", "c"]
+#-----------------------------------------
+for i in range(len(lista)):
+    print(i, lista[i])
+
+mi_lista = [1,2,3,4,3]
+#-----------------------------------------
+for i, v in enumerate(mi_lista):
+    if v == 3:
+        print("Está en la posición:", i)
+
+mi_nueva_lista =[1,2,3,3,4,5,6]
 #.append(4) agrega un elemento a listas
-mi_nueva_lista.extend([4,5,6]) #suma como append pero ams de 1 revisar
+mi_nueva_lista.extend([4,5,6]) #suma como append pero mas de 1
 
 #✅ list es una función (más exactamente, una clase/constructor)
 lista = list([1, 2, 3])
@@ -137,24 +152,29 @@ mi_nueva_lista.clear()
 
 # sum() es función, no método #### Funciones → funcion(objeto) y Métodos → objeto.metodo()
 
+mi_diccionario={'manu': 70,
+                       'andres': 90,
+                       'Juana':8}
+
 # nota: busca, si encuentra, reemplaza/actualiza; si no encuentra, crea
 mi_diccionario["Mario"] = 30
 
 ## Forma 2: con .update(), actualiza datos
 mi_diccionario.update({'Ernesto': 70,
                        'Ignacio': 90,
-                       'Juan':8})
+                       'Juan':8,
+                       "maria":33})
 
 ## Forma 3: con .setdefault() para evitar reemplazos no queridos si encuentra algo no aplicada nada
 mi_diccionario.setdefault('Ernesto', 40)
 
 # ... pero hay otras opciones
-print(mi_dicc.get('nombre3')) # arroja None
-print(mi_dicc.get('nombre3', 'oye, no encontré esa key')) # arroja el mensaje #####
+print(mi_diccionario.get('nombre3')) # arroja None
+print(mi_diccionario.get('nombre3', 'oye, no encontré esa key')) # arroja el mensaje #####
 
 ## en diccionarios: pop() necesita como argumento una key
 # en sets: pop() borra el primer item del orden de aparción (porque no están indexados)
-mi_diccionario.pop('María')
+mi_diccionario.pop('maria')
 
 ###SETS desordenados, sin índice, con valores reemplazables, pero no modificables
 # set
@@ -184,11 +204,14 @@ mi_set
 #for i in list:
 #for i in range(1,10+1): no es indice es elemento
 #Forma	¿Qué es i?
-for i in lista	Elemento
-for i in range(...)	Número (contador / posible índice)
+for i in lista:	# trabajo con el Elemento
+    print(i)
+for i in range(2):	# trabajo con Número (contador / posible índice)
+    print(i)
 
 #break, continue(pasa al sigueinte for nos sigue codigo), pass (solo continua codigo) = solo para bucles for
 
 #while loop
 
+#solucion in one line de ejercicio 3 
 print(list(map(lambda i: "TRIPLE-QUINTO" if i%15==0 else "TRIPLE" if i%3==0 else "QUINTO" if i%5==0 else i, range(1,21))))

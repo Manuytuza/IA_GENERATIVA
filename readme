@@ -1,0 +1,286 @@
+# 📘 README – Curso de Python & IA (Apuntes + Práctica)
+
+## 🧠 CLASE 01 – 06/04 – Introducción a IA
+
+### 📌 Temas principales
+
+* Notebook LLM → Proyecto final
+* Organización:
+
+  * Tareas diarias
+  * Trabajo en grupo
+  * Entregas individuales
+* 📅 Fecha clave:
+
+  * **10 de junio → Presentación final**
+
+### 💡 Concepto clave
+
+> **Dato** = elemento en bruto
+> **Información** = dato + contexto
+
+### 🔧 Herramientas a explorar
+
+* Zapier
+* n8n
+* Configuración GPU con CUDA
+
+---
+
+## 🧠 CLASE 02 – 08/04 – Fundamentos Python
+
+### 📦 Colecciones
+
+```python
+lista = [1, 2, 3]
+diccionario = {"a": 10, "b": 20}
+```
+
+### 🔧 Funciones
+
+```python
+def suma(a, b):
+    return a + b
+```
+
+### ⚡ Lambda (función rápida)
+
+```python
+func = lambda x, y: x + y
+```
+
+### 🔁 List Comprehension
+
+```python
+[x+1 for x in range(5) if x % 2 == 0]
+```
+
+---
+
+## 🧠 CLASE 03 – Operaciones y Strings
+
+### 🔢 Operaciones
+
+```python
+print(2**5)  # potencia
+```
+
+### 🔤 Strings
+
+```python
+texto = "una cadena"
+print(texto[1:6])  # slicing
+```
+
+### ✂️ Métodos importantes
+
+```python
+texto.strip()   # quita espacios extremos (NO modifica original)
+texto.find("a") # busca posición
+texto.split()   # convierte en lista un string, string → lista
+" ".join(lista) # 👉 .join() sirve para unir elementos/str unicamente de una lista en un solo string
+```
+
+### 🎯 Ejemplo join
+
+```python
+cursos = ["mate", "lenguaje"]
+print(", ".join(cursos))
+```
+
+---
+
+## 🧠 FORMATO Y DETALLES
+
+### 🔢 Números
+
+```python
+1_000_000  # legibilidad
+round(10.5)  # redondeo bancario
+```
+
+### 🎯 f-strings
+
+```python
+precio = 4
+print(f"Precio: {precio:.2f}")
+```
+
+---
+
+## 🧠 LISTAS Y TUPLAS
+
+### 📌 Diferencia
+
+* Lista → mutable
+* Tupla → inmutable
+
+### 🔁 Copias
+
+```python
+copia = lista[:]       # shallow copy
+import copy
+deep = copy.deepcopy(lista)
+```
+
+---
+
+## 🧠 MÉTODOS DE LISTAS
+
+```python
+lista.append(4)
+lista.extend([5,6])
+lista.insert(1, 10)
+lista.pop()
+lista.remove(4)
+lista.clear()
+```
+
+---
+
+## 🧠 BÚSQUEDA Y ENUMERATE
+
+### 🔍 Buscar índices
+
+```python
+mi_lista = (1,2,3,3,4) #tupla no tiene index
+resultado = [i for i, v in enumerate(mi_lista) if v == 3]
+```
+
+👉 Resultado:
+
+```
+[2, 3]
+```
+
+### 🧠 Explicación
+
+* `enumerate()` → (índice, valor)
+* filtra donde valor = 3
+* devuelve índices
+
+---
+
+## 🧠 LOOPS
+
+### 🔁 For
+
+```python
+for i in lista:
+    print(i)
+```
+
+```python
+for i in range(5):
+    print(i)
+```
+
+### ⚠️ Control
+
+* `break` → corta
+* `continue` → salta iteración
+* `pass` → no hace nada
+
+---
+
+## 🧠 DICCIONARIOS
+
+```python
+dic = {"a": 1}
+dic["b"] = 2
+dic.update({"c":3})
+dic.get("x", "no existe")
+```
+
+### 🔑 Métodos
+
+* `.keys()`
+* `.values()`
+* `.items()`
+
+---
+
+## 🧠 SETS (CONJUNTOS)
+
+```python
+a = {1,2,3}
+b = {3,4,5}
+
+a | b  # unión
+a & b  # intersección
+a - b  # diferencia
+a ^ b  # diferencia simétrica
+```
+
+---
+
+## 🧠 STRINGS IMPORTANTES
+
+### ⚡ Inmutabilidad
+
+```python
+texto = " hola "
+texto.strip()  # NO cambia
+texto = texto.strip()  # correcto
+```
+
+---
+
+## 🧠 MAP (FUNCIONAL)
+
+```python
+lista = [1,2,3]
+doble = list(map(lambda x: x*2, lista))
+```
+
+---
+
+## 🧠 EJERCICIO AVANZADO
+
+```python
+print(list(
+    map(lambda i:
+        "TRIPLE-QUINTO" if i%15==0
+        else "TRIPLE" if i%3==0
+        else "QUINTO" if i%5==0
+        else i,
+        range(1,21)
+    )
+))
+```
+
+---
+
+## 🧠 CONCEPTOS CLAVE FINALES
+
+✔ Función vs método
+✔ Inmutabilidad en strings
+✔ Enumerate = índice + valor
+✔ List comprehension = forma compacta
+✔ map/lambda = programación funcional
+✔ GitHub = control de versiones
+
+---
+
+## 🚀 SIGUIENTE NIVEL
+
+* Proyecto final con IA
+* Automatización (Zapier / n8n)
+* Uso de GPU (CUDA)
+* Trabajo colaborativo con Git
+
+---
+
+## 📌 RESUMEN FINAL
+
+Este curso cubre:
+
+* Bases de Python
+* Estructuras de datos
+* Manipulación de texto
+* Programación funcional
+* Preparación para IA
+
+👉 Todo aplicado a un **proyecto final real**
+
+---
