@@ -1,286 +1,178 @@
-# 📘 README – Curso de Python & IA (Apuntes + Práctica)
+# 📘 PYTHON & IA — GUÍA FINAL (ULTRA RESUMEN)
 
-## 🧠 CLASE 01 – 06/04 – Introducción a IA
+## 🧠 BASE
 
-### 📌 Temas principales
-
-* Notebook LLM → Proyecto final
-* Organización:
-
-  * Tareas diarias
-  * Trabajo en grupo
-  * Entregas individuales
-* 📅 Fecha clave:
-
-  * **10 de junio → Presentación final**
-
-### 💡 Concepto clave
-
-> **Dato** = elemento en bruto
-> **Información** = dato + contexto
-
-### 🔧 Herramientas a explorar
-
-* Zapier
-* n8n
-* Configuración GPU con CUDA
+Dato→info=dato+contexto | Python: imperativo+POO+funcional
 
 ---
 
-## 🧠 CLASE 02 – 08/04 – Fundamentos Python
-
-### 📦 Colecciones
+## 🔧 FUNCIONES
 
 ```python
-lista = [1, 2, 3]
-diccionario = {"a": 10, "b": 20}
+def f(a): return a
 ```
 
-### 🔧 Funciones
-
-```python
-def suma(a, b):
-    return a + b
-```
-
-### ⚡ Lambda (función rápida)
-
-```python
-func = lambda x, y: x + y
-```
-
-### 🔁 List Comprehension
-
-```python
-[x+1 for x in range(5) if x % 2 == 0]
-```
+✔ función≠método (obj.metodo())
 
 ---
 
-## 🧠 CLASE 03 – Operaciones y Strings
+## 📦 ESTRUCTURAS
 
-### 🔢 Operaciones
-
-```python
-print(2**5)  # potencia
-```
-
-### 🔤 Strings
-
-```python
-texto = "una cadena"
-print(texto[1:6])  # slicing
-```
-
-### ✂️ Métodos importantes
-
-```python
-texto.strip()   # quita espacios extremos (NO modifica original)
-texto.find("a") # busca posición
-texto.split()   # convierte en lista un string, string → lista
-" ".join(lista) # 👉 .join() sirve para unir elementos/str unicamente de una lista en un solo string
-```
-
-### 🎯 Ejemplo join
-
-```python
-cursos = ["mate", "lenguaje"]
-print(", ".join(cursos))
-```
+Lista[] mutable | Tupla() inmutable | Dict{key:val} | Set{} sin orden/dup
 
 ---
 
-## 🧠 FORMATO Y DETALLES
+## 🔁 LOOPS
 
-### 🔢 Números
-
-```python
-1_000_000  # legibilidad
-round(10.5)  # redondeo bancario
-```
-
-### 🎯 f-strings
-
-```python
-precio = 4
-print(f"Precio: {precio:.2f}")
-```
+for / while | break=corta | continue=salta | pass=nada
 
 ---
 
-## 🧠 LISTAS Y TUPLAS
+## 🧠 STRINGS (INMUTABLE)
 
-### 📌 Diferencia
-
-* Lista → mutable
-* Tupla → inmutable
-
-### 🔁 Copias
-
-```python
-copia = lista[:]       # shallow copy
-import copy
-deep = copy.deepcopy(lista)
-```
+.strip() limpia extremos ❌no cambia → reasignar
+.split() str→list | " ".join(lista) list→str
 
 ---
 
-## 🧠 MÉTODOS DE LISTAS
+## ⚡ LIST COMPREHENSION
 
 ```python
-lista.append(4)
-lista.extend([5,6])
-lista.insert(1, 10)
-lista.pop()
-lista.remove(4)
-lista.clear()
+[exp for x in lista if cond]
+```
+
+✔ izq=transforma | der=itera
+
+---
+
+## ⚡ FUNCIONAL
+
+lambda x:x*2
+map(f,l) | filter(f,l) | reduce(f,l)
+✔ evita loops explícitos
+
+---
+
+## 🧠 ENUMERATE
+
+```python
+for i,v in enumerate(l)
+```
+
+✔ índice+valor
+
+---
+
+## 🧠 CLASES
+
+```python
+class A:
+ def __init__(self): self.x=1
+```
+
+✔ self=instancia
+
+---
+
+## 🧬 HERENCIA
+
+```python
+class Hijo(Padre): super().__init__()
+```
+
+✔ reutiliza/extiende
+
+---
+
+## 🔒 ENCAPSULAMIENTO
+
+self._x | get/set
+✔ controla acceso
+
+# error: modificar directo sin validar
+
+---
+
+## ⚠ INPUT
+
+✔ int(input()) + try/except
+✔ validar rango manual
+
+# error: confiar en tipo sin validar valor
+
+---
+
+## ⚙️ DICCIONARIO
+
+dic[key] | dic.get(k,def)
+✔ get evita error
+
+# error: get no valida lógica
+
+---
+
+## 🔁 MAPEO
+
+✔ dict reemplaza múltiples if
+
+---
+
+## 🧠 GENERADORES (yield)
+
+```python
+def g(): yield x
+```
+
+✔ pausa | guarda estado | next() continúa
+
+```python
+next(g)
 ```
 
 ---
 
-## 🧠 BÚSQUEDA Y ENUMERATE
+## ⚠ ERRORES YIELD
 
-### 🔍 Buscar índices
+❌ pensar lista
+❌ usar print
+❌ olvidar consumo
+❌ no contar yields
 
-```python
-mi_lista = (1,2,3,3,4) #tupla no tiene index
-resultado = [i for i, v in enumerate(mi_lista) if v == 3]
-```
-
-👉 Resultado:
-
-```
-[2, 3]
-```
-
-### 🧠 Explicación
-
-* `enumerate()` → (índice, valor)
-* filtra donde valor = 3
-* devuelve índices
+✔ regla: 1 yield = 1 salida
 
 ---
 
-## 🧠 LOOPS
+## 🧠 ESTADO
 
-### 🔁 For
+✔ variables + punto ejecución
+yield guarda | next sigue
 
-```python
-for i in lista:
-    print(i)
-```
-
-```python
-for i in range(5):
-    print(i)
-```
-
-### ⚠️ Control
-
-* `break` → corta
-* `continue` → salta iteración
-* `pass` → no hace nada
+# clave: no reinicia
 
 ---
 
-## 🧠 DICCIONARIOS
+## ⚠ ERRORES CLAVE
 
-```python
-dic = {"a": 1}
-dic["b"] = 2
-dic.update({"c":3})
-dic.get("x", "no existe")
-```
-
-### 🔑 Métodos
-
-* `.keys()`
-* `.values()`
-* `.items()`
+❌ no reasignar strings
+❌ confundir función/método
+❌ usar list como nombre
+❌ no validar input
+❌ confiar solo en get
+❌ pensar next reinicia
 
 ---
 
-## 🧠 SETS (CONJUNTOS)
+## 🚀 BUENAS PRÁCTICAS
 
-```python
-a = {1,2,3}
-b = {3,4,5}
-
-a | b  # unión
-a & b  # intersección
-a - b  # diferencia
-a ^ b  # diferencia simétrica
-```
+✔ validar siempre
+✔ nombres claros
+✔ separar lógica
+✔ entender flujo antes
 
 ---
 
-## 🧠 STRINGS IMPORTANTES
+## 🎯 CLAVE FINAL
 
-### ⚡ Inmutabilidad
-
-```python
-texto = " hola "
-texto.strip()  # NO cambia
-texto = texto.strip()  # correcto
-```
-
----
-
-## 🧠 MAP (FUNCIONAL)
-
-```python
-lista = [1,2,3]
-doble = list(map(lambda x: x*2, lista))
-```
-
----
-
-## 🧠 EJERCICIO AVANZADO
-
-```python
-print(list(
-    map(lambda i:
-        "TRIPLE-QUINTO" if i%15==0
-        else "TRIPLE" if i%3==0
-        else "QUINTO" if i%5==0
-        else i,
-        range(1,21)
-    )
-))
-```
-
----
-
-## 🧠 CONCEPTOS CLAVE FINALES
-
-✔ Función vs método
-✔ Inmutabilidad en strings
-✔ Enumerate = índice + valor
-✔ List comprehension = forma compacta
-✔ map/lambda = programación funcional
-✔ GitHub = control de versiones
-
----
-
-## 🚀 SIGUIENTE NIVEL
-
-* Proyecto final con IA
-* Automatización (Zapier / n8n)
-* Uso de GPU (CUDA)
-* Trabajo colaborativo con Git
-
----
-
-## 📌 RESUMEN FINAL
-
-Este curso cubre:
-
-* Bases de Python
-* Estructuras de datos
-* Manipulación de texto
-* Programación funcional
-* Preparación para IA
-
-👉 Todo aplicado a un **proyecto final real**
-
----
+Flujo > sintaxis
+Estado > resultado
+Pensar > codear
