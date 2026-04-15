@@ -66,21 +66,15 @@ loki.presentation()
 
 
 #------- mañana 12/04
-
-# Clase Libro
+#_______ morning 15/04. no se hereda se usa parte de codigo book
 class Book:
     def __init__(self, title, author):
         self.title = title
         self.author = author
 
-# Clase Biblioteca
 class Library:
-    def __init__(self, books=None):
-        # Si no se pasa ninguna lista, se crea una vacía
-        if books is None:
-            self.books = []
-        else:
-            self.books = books
+    def __init__(self):
+        self.books = []
 
     def add_book(self, book):
         self.books.append(book)
@@ -89,25 +83,17 @@ class Library:
         for book in self.books:
             print(f"{book.title} by {book.author}")
 
+# Crear libros
+b1 = Book("1984", "Orwell")
+b2 = Book("Python", "Guido")
 
-# -------------------------------
-# Uso del código
+# Crear biblioteca
+lib = Library()
 
-# Biblioteca vacía
-library1 = Library()
-library1.add_book(Book("1984", "George Orwell"))
-library1.add_book(Book("To Kill a Mockingbird", "Harper Lee"))
-print("Biblioteca 1:")
-library1.display_books()
+# Agregar libros
+lib.add_book(b1)
+lib.add_book(b2)
 
-print("\n-----------------\n")
+# Mostrar
+lib.display_books()
 
-# Biblioteca con libros iniciales
-initial_books = [
-    Book("Don Quijote", "Miguel de Cervantes"),
-    Book("Cien años de soledad", "Gabriel García Márquez")
-]
-
-library2 = Library(initial_books)
-print("Biblioteca 2:")
-library2.display_books()
