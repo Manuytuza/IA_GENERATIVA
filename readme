@@ -5,7 +5,6 @@
 Dato -> info = dato + contexto | Python: imperativo + POO + funcional
 
 ---
-
 ## FUNCIONES
 
 ```python
@@ -16,26 +15,22 @@ def f(a):
 OK funcion != metodo (obj.metodo())
 
 ---
-
 ## ESTRUCTURAS
 
 Lista[] mutable | Tupla() inmutable | Dict{key: val} | Set{} sin orden/dup
 
 ---
-
 ## LOOPS
 
 for / while | break = corta | continue = salta | pass = nada
 
 ---
-
 ## STRINGS (INMUTABLE)
-
+ list[slice(init,fin,saltos)]
 .strip() limpia extremos NO cambia -> reasignar  
-.split() str -> list | " ".join(lista) list -> str
+.split() str -> list (no altera origen se deba almacenar) | "separador ".join(lista) list -> str
 
 ---
-
 ## LIST COMPREHENSION
 
 ```python
@@ -45,7 +40,6 @@ for / while | break = corta | continue = salta | pass = nada
 OK izquierda transforma | derecha itera
 
 ---
-
 ## FUNCIONAL
 
 lambda x: x * 2  
@@ -53,7 +47,6 @@ map(f, l) | filter(f, l) | reduce(f, l)
 OK evita loops explicitos
 
 ---
-
 ## ENUMERATE
 
 ```python
@@ -64,7 +57,6 @@ for i, v in enumerate(l):
 OK indice + valor
 
 ---
-
 ## CLASES
 
 ```python
@@ -76,7 +68,6 @@ class A:
 OK self = instancia
 
 ---
-
 ## HERENCIA
 
 ```python
@@ -88,7 +79,6 @@ class Hijo(Padre):
 OK reutiliza / extiende
 
 ---
-
 ## ENCAPSULAMIENTO
 
 self._x | get/set  
@@ -97,7 +87,6 @@ OK controla acceso
 ERROR: modificar directo sin validar
 
 ---
-
 ## INPUT
 
 OK int(input()) + try/except  
@@ -106,7 +95,6 @@ OK validar rango manual
 ERROR: confiar en tipo sin validar valor
 
 ---
-
 ## DICCIONARIO
 
 dic[key] | dic.get(k, def)  
@@ -115,13 +103,11 @@ OK get evita error
 ERROR: get no valida logica
 
 ---
-
 ## MAPEO
 
 OK dict reemplaza multiples if
 
 ---
-
 ## GENERADORES (yield)
 
 ```python
@@ -134,7 +120,60 @@ OK pausa | guarda estado | next() continua
 ```python
 next(g)
 ```
+CLASS HERENCIA
 
+#estructura base de herencia
+
+class padre():
+    n ="fijo_n"
+    b ="fijo_b"
+    def __init__(self, z,y,x):
+        self.x = x
+        self.y = y
+        self.z = z
+    def nombrar(self):
+        print(self.n,self.b,self.x,self.y,self.z)
+
+class hijo(padre):
+    def __init__(self,x,y,z):
+        super().__init__(x,y,z)
+
+hijo1 = hijo("1x","2y","3z")
+hijo1.nombrar()
+
+
+## #BENCHMARK medir rendimiento y compararlo
+# benchmark = prueba de velocidad
+
+import timeit
+
+
+# código que quieres medir
+def for_time():
+    y = []
+    for i in range(1000000):   
+        y.append(i)
+    return y #return dentro de for lo detiene y fuera devuelve producto
+"""
+        yield y
+
+instancia =y() #sin la instancia vuelve el inicio no tiene memoria
+print(next(instancia))
+print(next(instancia))
+print(next(instancia))
+"""
+def li_compr_time():
+    x = [a for a in range(1000000)]
+    return x
+
+
+for_t = timeit.timeit(for_time, number=5)
+com_t = timeit.timeit(li_compr_time, number=5)
+
+print(com_t)
+print(for_t)
+
+print(round(com_t-for_t, 4))
 ---
 
 ## ERRORES YIELD

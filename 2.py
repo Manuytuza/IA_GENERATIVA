@@ -27,8 +27,61 @@ class PerroCasero:
     def ladrar(self, sonido):
         return f"{self.nombre} dice: {sonido}"
 
-print(PerroCasero.__doc__) ####
+print(PerroCasero.__doc__) #### Muestra comentarios """ 
 
 #Instanciar
 perro_1 = PerroCasero('Pluto', 5)
 perro_2 = PerroCasero('Milu', 3)
+
+#estructura base de herencia
+
+class padre():
+    n ="fijo_n"
+    b ="fijo_b"
+    def __init__(self, z,y,x):
+        self.x = x
+        self.y = y
+        self.z = z
+    def nombrar(self):
+        print(self.n,self.b,self.x,self.y,self.z)
+
+class hijo(padre):
+    def __init__(self,x,y,z):
+        super().__init__(x,y,z)
+
+hijo1 = hijo("1x","2y","3z")
+hijo1.nombrar()
+
+#----------------------------------------------------------------------------
+#BENCHMARK medir rendimiento y compararlo
+# benchmark = prueba de velocidad
+
+import timeit
+
+
+# código que quieres medir
+def for_time():
+    y = []
+    for i in range(1000000):   
+        y.append(i)
+    return y #return dentro de for lo detiene y fuera devuelve producto
+"""
+        yield y
+
+instancia =y() #sin la instancia vuelve el inicio no tiene memoria
+print(next(instancia))
+print(next(instancia))
+print(next(instancia))
+"""
+def li_compr_time():
+    x = [a for a in range(1000000)]
+    return x
+
+
+for_t = timeit.timeit(for_time, number=5)
+com_t = timeit.timeit(li_compr_time, number=5)
+
+print(com_t)
+print(for_t)
+
+print(round(com_t-for_t, 4))
