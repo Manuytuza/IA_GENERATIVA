@@ -215,3 +215,90 @@ for i in range(2):	# trabajo con Número (contador / posible índice)
 
 #solucion in one line de ejercicio 3 
 print(list(map(lambda i: "TRIPLE-QUINTO" if i%15==0 else "TRIPLE" if i%3==0 else "QUINTO" if i%5==0 else i, range(1,21))))
+
+##15/04 clase 05 
+
+#FUNCIONES 
+#parametro termino general y argumento son los que instancian a los parametros
+#round==redondeo
+#scope , no se recomienda usar "global" sin comillas antes de la variable por comflicto en proyectos grandes 
+# nonlocal : permite que var suba un nivel 
+def func_mayor():
+    print("sin corchete solo almacena def")
+var_rara_1 = func_mayor   #almacena la función, se usa en generadores
+print(var_rara_1)
+var_rara_2 = func_mayor() #almacena el output de la función
+print(var_rara_2)
+
+#funciones anidadascon MEMORIA
+
+def mult(n1):
+  def operation(n2):
+    return n1**n2
+  return operation
+
+var1 = 5
+var2 = 2
+
+func_op = mult(var1)
+
+var1 = 4
+# no se usa el valor nuevo porque la función se llamó antes de la re-definición
+
+result = func_op(var2)
+print(result)
+
+# alternativa en un solo paso:
+print(mult(var1)(var2))
+
+#IV.4 PARÁMETROS ESPECIALES *args y **kwargs
+# Argumentos especiales: *args
+  # (en realidad puede ser cualquier string precedido de *)
+def sum_var_args_1(*args):
+  return sum(args)
+
+sum_var_args_1(1,2,3,4,5,6,7)
+
+# un poco más complejo:
+def sum_var_args_2(*args):
+  m=0
+  for i in args:
+    m += i*1.25
+  return m
+
+sum_var_args_2(1,2,3,4,5,6,7)
+
+# Argumentos especiales: **kwargs
+  # (en realidad puede ser cualquier string precedido de **)
+
+def apellido_alumnos(**kwargs):
+  print("El apellido es " + kwargs["apellido"])
+
+apellido_alumnos(nombre = "Julio", apellido = "Santos")
+apellido_alumnos(apellido = "Torres", nombre = "Marta", edad=13)
+apellido_alumnos(grado = "5to", nombre = "Norberto", apellido = "Velarde")
+
+# ARGS trabajo con tuplas (1,) o 1,
+#kwargs key "=" value 
+
+def crear_receta(**kwargs):
+    receta = "Ingredientes para receta:\n"
+    for ingrediente, cantidad in kwargs.items():
+        receta += f"{cantidad} de {ingrediente}\n"
+    return receta
+
+# Crear una receta pasando ingredientes como argumentos con nombre
+print(crear_receta(harina="200g", azucar="100g", mantequilla="50g", huevos="2 unidades"))
+
+#doc - string (comentarios con """)
+
+def sum_var_args(*args):
+  """
+  Esta es una función muy importante porque así lo hemos necesitado (bla bla bla)
+  Argumentos:
+    *args: una tupla no vacía con valores numéricas
+  Return: la suma de dichos valores
+  """
+  return sum(args)
+
+sum_var_args(1,2,3,4,5,6)

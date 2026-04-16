@@ -1,129 +1,135 @@
-# 📘 PYTHON & IA — GUÍA FINAL (ULTRA RESUMEN)
+# PYTHON & IA - GUIA FINAL (ULTRA RESUMEN)
 
-## 🧠 BASE
+## BASE
 
-Dato→info=dato+contexto | Python: imperativo+POO+funcional
+Dato -> info = dato + contexto | Python: imperativo + POO + funcional
 
 ---
 
-## 🔧 FUNCIONES
+## FUNCIONES
 
 ```python
-def f(a): return a
+def f(a):
+    return a
 ```
 
-✔ función≠método (obj.metodo())
+OK funcion != metodo (obj.metodo())
 
 ---
 
-## 📦 ESTRUCTURAS
+## ESTRUCTURAS
 
-Lista[] mutable | Tupla() inmutable | Dict{key:val} | Set{} sin orden/dup
-
----
-
-## 🔁 LOOPS
-
-for / while | break=corta | continue=salta | pass=nada
+Lista[] mutable | Tupla() inmutable | Dict{key: val} | Set{} sin orden/dup
 
 ---
 
-## 🧠 STRINGS (INMUTABLE)
+## LOOPS
 
-.strip() limpia extremos ❌no cambia → reasignar
-.split() str→list | " ".join(lista) list→str
+for / while | break = corta | continue = salta | pass = nada
 
 ---
 
-## ⚡ LIST COMPREHENSION
+## STRINGS (INMUTABLE)
+
+.strip() limpia extremos NO cambia -> reasignar  
+.split() str -> list | " ".join(lista) list -> str
+
+---
+
+## LIST COMPREHENSION
 
 ```python
 [exp for x in lista if cond]
 ```
 
-✔ izq=transforma | der=itera
+OK izquierda transforma | derecha itera
 
 ---
 
-## ⚡ FUNCIONAL
+## FUNCIONAL
 
-lambda x:x*2
-map(f,l) | filter(f,l) | reduce(f,l)
-✔ evita loops explícitos
+lambda x: x * 2  
+map(f, l) | filter(f, l) | reduce(f, l)  
+OK evita loops explicitos
 
 ---
 
-## 🧠 ENUMERATE
+## ENUMERATE
 
 ```python
-for i,v in enumerate(l)
+for i, v in enumerate(l):
+    pass
 ```
 
-✔ índice+valor
+OK indice + valor
 
 ---
 
-## 🧠 CLASES
+## CLASES
 
 ```python
 class A:
- def __init__(self): self.x=1
+    def __init__(self):
+        self.x = 1
 ```
 
-✔ self=instancia
+OK self = instancia
 
 ---
 
-## 🧬 HERENCIA
+## HERENCIA
 
 ```python
-class Hijo(Padre): super().__init__()
+class Hijo(Padre):
+    def __init__(self):
+        super().__init__()
 ```
 
-✔ reutiliza/extiende
+OK reutiliza / extiende
 
 ---
 
-## 🔒 ENCAPSULAMIENTO
+## ENCAPSULAMIENTO
 
-self._x | get/set
-✔ controla acceso
+self._x | get/set  
+OK controla acceso  
 
-# error: modificar directo sin validar
-
----
-
-## ⚠ INPUT
-
-✔ int(input()) + try/except
-✔ validar rango manual
-
-# error: confiar en tipo sin validar valor
+ERROR: modificar directo sin validar
 
 ---
 
-## ⚙️ DICCIONARIO
+## INPUT
 
-dic[key] | dic.get(k,def)
-✔ get evita error
+OK int(input()) + try/except  
+OK validar rango manual  
 
-# error: get no valida lógica
-
----
-
-## 🔁 MAPEO
-
-✔ dict reemplaza múltiples if
+ERROR: confiar en tipo sin validar valor
 
 ---
 
-## 🧠 GENERADORES (yield)
+## DICCIONARIO
+
+dic[key] | dic.get(k, def)  
+OK get evita error  
+
+ERROR: get no valida logica
+
+---
+
+## MAPEO
+
+OK dict reemplaza multiples if
+
+---
+
+## GENERADORES (yield)
 
 ```python
-def g(): yield x
+def g():
+    yield x
 ```
 
-✔ pausa | guarda estado | next() continúa
+OK pausa | guarda estado | next() continua
 
 ```python
 next(g)
@@ -131,48 +137,48 @@ next(g)
 
 ---
 
-## ⚠ ERRORES YIELD
+## ERRORES YIELD
 
-❌ pensar lista
-❌ usar print
-❌ olvidar consumo
-❌ no contar yields
+NO pensar lista  
+NO usar print  
+NO olvidar consumo  
+NO no contar yields  
 
-✔ regla: 1 yield = 1 salida
-
----
-
-## 🧠 ESTADO
-
-✔ variables + punto ejecución
-yield guarda | next sigue
-
-# clave: no reinicia
+OK regla: 1 yield = 1 salida
 
 ---
 
-## ⚠ ERRORES CLAVE
+## ESTADO
 
-❌ no reasignar strings
-❌ confundir función/método
-❌ usar list como nombre
-❌ no validar input
-❌ confiar solo en get
-❌ pensar next reinicia
+OK variables + punto ejecucion  
+yield guarda | next sigue  
+
+CLAVE: no reinicia
 
 ---
 
-## 🚀 BUENAS PRÁCTICAS
+## ERRORES CLAVE
 
-✔ validar siempre
-✔ nombres claros
-✔ separar lógica
-✔ entender flujo antes
+NO no reasignar strings  
+NO confundir funcion/metodo  
+NO usar list como nombre  
+NO no validar input  
+NO confiar solo en get  
+NO pensar next reinicia  
 
 ---
 
-## 🎯 CLAVE FINAL
+## BUENAS PRACTICAS
 
-Flujo > sintaxis
-Estado > resultado
+OK validar siempre  
+OK nombres claros  
+OK separar logica  
+OK entender flujo antes  
+
+---
+
+## CLAVE FINAL
+
+Flujo > sintaxis  
+Estado > resultado  
 Pensar > codear
