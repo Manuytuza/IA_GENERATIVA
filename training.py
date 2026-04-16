@@ -52,8 +52,27 @@ ll1 = [1,2,3,4,5]
 def_lamba = lambda x : x**x
 var_map = list(map(def_lamba, ll1)) #map
 var_filter = list(filter(lambda x: x < 4, ll1)) #filter
+
 from functools import reduce
+
 ## La operación será: ((valor_inicial * 1) * 2) * 3
 var_reduce = reduce(lambda x,y: x*y, ll1,5)
 print(var_reduce)
+
+#enumerate 
+#invertir orden de palabra sin usar range reverse o [::-1]
+lstr = " manuel ytuza "
+var_cy = []
+def enumer():
+    for index , value in enumerate(lstr):
+        if value ! #fin 16/04 remoto
+        len(lstr)
+        var_cy.append(value)
+
+    print(var_cy)
+
+enumer()
+print(var_cy)
+
+
 
