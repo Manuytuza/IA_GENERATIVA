@@ -1,9 +1,11 @@
 l1 = [1,2,3,4,5,]
-t1 = (1,2,3,4,5,6)
+t1 = (x for x in range(1,20,2)) #generador
+print(next(t1))
+print(next(t1))
 
 t1_2 = {}
 t1_1 = enumerate(t1) #iterador
-#print(list(t1_1)) [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)]
+print(list(t1_1)) #[(0, 5), (1, 7), (2, 9), (3, 11), (4, 13), (5, 15), (6, 17), (7, 19)]
 
 for index, value in enumerate(t1):
     t1_2[index] = value
@@ -16,7 +18,8 @@ for index, value in enumerate(t1):
 {} con : → dict comprehension
 """
 lc = [(value,index) for index,value in enumerate(t1) if index > 2]
-#print(lc) #[1, 2, 3, 4, 5, 6]
+#print(lc) #
+t1 = (1,2,3,4,5,6)
 ldic ={index: value for index, value in enumerate(t1)}
 #print(ldic) {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6}
 #---------------------------------------------------
@@ -123,9 +126,30 @@ dany =familia("danytza", 37, "millonaria", "pegar a su esposo")
 emi =familia("emile", 13, "salir todos los dias", "torturar")
 alice =familia("alice", 5, "tener un helicoptero", "imaginar")
 
-manuel.choise_person()
-
+t = manuel.choise_person
+t()
 #fin del dia 16 
 
+#revisamos tomorrow 17 ................................................
+def opcion1():
+    print("manuel")
 
+def opcion2():
+    print("emi")
+
+menu = {
+    1: opcion1,
+    2: opcion2
+}
+
+menu[1]()  # ejecuta manuel 
+
+
+# para mejorar mañana 
+dicc = {
+    1: manuel.ficha,
+    2: emi.ficha
+}
+
+dicc[num]()  # ejecuta dinámicamente
 
