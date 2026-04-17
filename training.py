@@ -142,14 +142,77 @@ menu = {
     2: opcion2
 }
 
-menu[1]()  # ejecuta manuel 
+# menu[1]()  # ejecuta manuel 
 
 
-# para mejorar mañana 
-dicc = {
-    1: manuel.ficha,
-    2: emi.ficha
-}
+# hoy 17
+def ejec_auto (num): #generamos def con parametro num
+    dicc = { #creamos dicc 
+        1: manuel.ficha, #key = int and value = name.ficha( llamamos directamente)
+        2: emi.ficha #al no tener () se almacena y espera () para ejecutar
+    }
 
-dicc[num]()  # ejecuta dinámicamente
+    dicc[num]()  # ejecuta dinámicamente al sumar ()
 
+#ejec_auto(1) #sumamos el argumento
+
+
+#############
+#encapsular def
+
+def calculadora():
+    def sumar(x,y):
+        return x+y
+    def resta(x,y):
+        return x-y
+    def division(x,y):
+        return x/y       
+    def multiplicacion(x,y):
+        return x*y
+    
+    dicc_cal ={
+            1:sumar,
+            2:resta,
+            3:division,
+            4:multiplicacion
+        }
+    dicc_cal_name ={
+        1:"suma",
+        2:"resta",
+        3:"division",
+        4:"multiplicacion"
+    }
+   
+    while True : 
+        try:
+            print("\n--------Calculadora pro--------")
+            print("x= ingresa el primer numero - y=ingresa el segundo numero")
+            x =float(input("primer numero"))
+            y =float(input("segundo numero"))
+            z = int(input("""
+Elije el numero de la operacion:
+    1 = suma,
+    2 = resta,
+    3 = division,
+    4 = multiplicacion 
+                                           
+        :  """))
+            
+            if z < 1 or z > 4: #if z not in dicc_cal:
+                print("numero fuera de rango \n")
+                continue
+            if z == 3:
+                while y == 0: 
+                    print("no se puede div entre 0")      
+                    y = float(input("agrega un numero entero > 0 : ")) 
+
+        except ValueError:
+            print("valor invalido, debe ser un numero")
+        else: 
+            print(f" el resultado de la {dicc_cal_name[z]} es {dicc_cal[z](x,y)}")
+            salir = input("si deseas finalizar escribe 0")
+            if salir == "0":
+                print(f"funcion calaculadora terminada \n")
+                break
+
+calculadora()
