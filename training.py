@@ -119,7 +119,7 @@ class familia:
                 rpt.ficha()
 
 manuel =familia("manuel", 30, "ser el mejor programador señor", "super inteligencia")
-dany =familia("danytza", 37, "comprar casa a sus papas", "pegar a su esposo")
+dany =familia("danytza", 37, "millonaria", "pegar a su esposo")
 emi =familia("emile", 13, "salir todos los dias", "torturar")
 alice =familia("alice", 5, "tener un helicoptero", "imaginar")
 
