@@ -302,3 +302,207 @@ def sum_var_args(*args):
   return sum(args)
 
 sum_var_args(1,2,3,4,5,6)
+
+#inicio clase 06 de IA GENERATIVA ------------
+
+#pendeinte repasar :  PARÁMETROS ESPECIALES *args y **kwargs , sumar sorter uso structura
+
+
+#class padre es opcional poner ()
+#se recomienda poner un doc 
+#atributos por defecto y los demas que varian con __init__
+#INSTANCIAR es crear individuos de la class
+
+class PerroCasero:  # CamelCase  (distinto al snake_case)
+  """
+  Clase que define perritos caseros, con atributos de especie y patas
+  y métodos para la edad y labrar
+  Inicializa con atributos de nombre y edad
+  """
+  # atributos
+  especie = 'canis familiaris'
+  patas = 4
+
+  # inicializador
+  def __init__(self, nombre, edad):
+    """
+    inicializa los atributos dinámicos de la clase
+      nombre: nombre del perro
+      edad: edad del perro
+    """
+    self.nombre = nombre
+    self.edad = edad
+
+  # métodos
+  def describir_edad(self):
+    return f"{self.nombre} tiene {self.edad} años"
+
+  def ladrar(self, sonido):
+    return f"{self.nombre} dice: {sonido}"
+
+########codigo anteior ############ para que corra
+class RussellTerrier(PerroCasero):
+
+    altura = 'chato'
+#self si mismo
+    def correr(self, velocidad):
+        self.velocidad = 0 # contrastar con self.velocidad = velocidad
+        return f"{self.nombre} corre a {velocidad} m/s"
+
+    def acelerar(self, incremento):
+        """método para incrementar velocidad"""
+        self.velocidad += incremento
+        print(f"el perro acelera a {self.velocidad} m/s")
+
+    def desacelerar(self, disminucion):
+        """método para disminuir velocidad"""
+        self.velocidad = max(0, self.velocidad - disminucion) #revisar elige el mayor, declara base como maximo anulando -int y SUMAR A README
+        print(f"el perro desacelera hasta los {self.velocidad} m/s")
+
+
+#clase que hereda de la clase PerroCasero
+class Bulldog(PerroCasero):
+    def sonreir(self):
+        return f"{self.nombre} sonríe!"
+
+    # modificar en la clase hija un método de la clase madre
+      # mismo método, distintos comportamiento (polimorfismo)#######
+    def ladrar(self, sonido):
+        return f"{self.nombre} gruñe: {sonido}"
+
+
+# se heredan elementos de la clase pariente
+perrito_chiquito_1 = RussellTerrier("Jim", 12)
+
+# pero también maneja sus propios elementos
+print(f"velciddad no retorno 10 se queda en 0 {perrito_chiquito_1.correr(10)}")
+
+perrito_chiquito_1.acelerar(8)
+perrito_chiquito_1.desacelerar(2)
+
+##ABASTRACCION: LO MINIMO indispensable de funcionamiento 
+#lower-super-islower-issuper
+
+## II MANEJO DE ERRORES
+##zerodivisionerror
+#syntaxError = FALTA ALGUN SIGNO 
+#NAMEeRROR - NO SE DEFINIO VAR
+
+#raise except
+x = 19
+if x < 21:
+  pass
+  #raise Exception(f'x no debe ser menor a 21 . Y el valor de x aquí es: {x}') #detiene todo por eso no correo lo demas
+
+#assert
+import sys
+
+#assert('linux' in sys.platform), "Este código solo corre en Linux."
+#assert('win64' in sys.platform), "Este código solo corre en Windows."
+
+input("Presiona Enter para cerrar...")
+#try
+a=2
+
+try:
+  10/a  # jugar cambiando valores
+except:
+  print("Hubo excepciones")
+else:
+  print("No hubo excepciones")
+finally:
+  print("Haya o no excepciones, igual muestra esto")
+
+print()
+#repasar HOYYYYYYYYY 
+try:
+    x = 19
+    if x < 21:
+        raise Exception(f'x no debe ser menor a 21 . Y el valor de x aquí es: {x}')
+
+    import sys
+    assert('linux' in sys.platform), "Este código solo corre en Linux."
+
+except Exception as e:
+    print("Error:", e)
+
+input("Presiona Enter para cerrar...")
+print()
+#en list comprehension
+cuadrados_2 = [i*i for i in range(10)]
+print(cuadrados_2)
+
+frase = 'tres tristes tigres comen trigo en el trigal'
+vowels = [i for i in frase if i in 'aeiou']
+print(vowels)
+
+#-------STRING
+frase_2 = 'trEs Tristes tigres@_'
+
+def es_consonante(letter):
+    vocales = 'aeiou'
+    return letter.isalpha() and letter.lower() not in vocales
+
+consonants = [i for i in frase_2 if es_consonante(i)]
+consonants
+#PUEDO GUARDO FUNCIONES EN EL LUGAR DE I INCIAL
+#----------------------
+# Podría transformarse el string a lista
+nombre = "juan"
+
+lista_nombre = list(nombre)
+resultado_nombre_1 = [i.upper() for i in lista_nombre]
+print(resultado_nombre_1)
+
+# pero no es necesario, se puede aplicar directamente al string
+resultado_nombre_2 = [i.upper() for i in nombre]
+print(resultado_nombre_2)
+
+"""
+Orden del "if" respecto del "for": diferencia entre if para filtrar vs if para transformar
+
+Si la condición "if" es únicamente para filtrar, irá después del "for"
+Si la condición "if" es para transformar elementos, irá antes del "for"
+"""
+precio_orig = [1.25, -9.45, 10.22, 3.78, -5.92, 1.16]
+precio_2_list_a = [i if i > 0 else 0 for i in precio_orig] # se usa para transformar
+print(precio_2_list_a)
+
+#SET COMPREHENSIONS CONJUNTOS
+cita = "memento mori"
+vocales_uniq = {i for i in cita if i in 'aeiou'}
+vocales_uniq
+
+#LAMBDA
+lambda x, y: x**3 + y**3
+_(2, 3)
+# funciona solo si se llama inmediatamente después
+# solo funciona una vez. Por eso no es muy recomendable usarlo
+
+(lambda x:
+(x % 2 and 'impar' or 'par'))(17)
+
+#LOS VALORES POR DEFECTO SIEMPRE A LA DERECHA
+# argumentos posicionales vs nombrados (positional vs keyword arguments)
+  # argumentos por default para parámetros
+def mi_suma_nueva_familia(x, y, z=0):
+  """
+  Suma las edades de los miembros de una familia que acaba de tener un hijo
+  Args:
+    x: edad del padre,
+    y: edad de la madre,
+    z: edad del hijo
+  Returns: suma de edades
+  """
+  return x + y + z
+
+mi_suma_nueva_familia(25, 24)
+
+(lambda *args: sum(args))(1,2,3,4,5,6,7,8,9)
+(lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)
+
+
+# revisar 
+
+sorted_ids = sorted(ids, key=lambda x: int(x[2:])) # orden (sort) según parte entera
+print(sorted_ids)
