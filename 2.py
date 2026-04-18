@@ -85,3 +85,21 @@ print(com_t)
 print(for_t)
 
 print(round(com_t-for_t, 4))
+
+#repaso parte uno 18
+
+#lambda y slicing en [: :]
+ids = ['id1', 'id2', 'id30', 'id3', 'id22', 'id100']
+sorted_ids = sorted(ids, key=lambda x: int(x[2:])) # orden (sort) según parte entera
+print(sorted_ids)
+
+x = "abcde"
+x[:2]
+
+#lambda + *args
+(lambda *args: sum(args))(1,2,3,4,5,6,7,8,9)
+
+#lambda + **kwargs
+(lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)
+#pendientes ver max, lambda, with read doc r, errores con import (linux-windous) y corte 
+
