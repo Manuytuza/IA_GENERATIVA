@@ -62,7 +62,7 @@ import timeit
 # código que quieres medir
 def for_time():
     y = []
-    for i in range(1000000):   
+    for i in range(1_000_000):   
         y.append(i)
     return y #return dentro de for lo detiene y fuera devuelve producto
 """
@@ -103,3 +103,4 @@ x[:2]
 (lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)
 #pendientes ver max, lambda, with read doc r, errores con import (linux-windous) y corte 
 
+# repaso remoto tarde , clase20 /04
