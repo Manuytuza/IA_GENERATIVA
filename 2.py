@@ -103,4 +103,162 @@ x[:2]
 (lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)
 #pendientes ver max, lambda, with read doc r, errores con import (linux-windous) y corte 
 
+#---------------------------------------------------
 # repaso remoto tarde , clase20 /04
+
+# Para aritmética decimal exacta from decimal import DecimalDecimal('0.7') * Decimal('0.7')
+ 
+strings = ['a', 'b', 'c', 'd', 'e']
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+results = list(zip(strings, numeros)) 
+# results = list(zip(strings, numeros ,strict=True )), si necesitamos que ambos iterables tengan el mismo # de elementos
+print(results) 
+
+#con map
+mascotas = ['pepe', 'pipo', 'papo', 'hermenegildo']
+mascotas_mayus = list(map(str.upper, mascotas))
+#STR es la clase que llama a la ufncion puede ser INT. FLOAT. BOOL.
+print(mascotas_mayus)
+
+#ahora custom zip con map
+strings = ['a', 'b', 'c', 'd', 'e']
+numeros = [1, 2, 3, 4, 5]
+results = list(map(lambda x, y: (x, y), strings, numeros))
+print(results)
+
+#filter 1 NECESITA UN BOLEANO para sumar
+scores = [66, 90, 68, 59, 76, 60, 88, 74, 81, 65]
+
+def is_student(nota):
+    return nota > 75
+
+over_75 = list(filter(is_student, scores))
+print(over_75)
+
+# ejemplo de unir 
+mis_bool = list(map(is_student, scores))
+[num for num, booleano in zip(scores, mis_bool) if booleano]
+#filter 2 ver palindromos 
+
+dromes = ("ana", "patata", "mermelada", "reconocer", "arenera")
+palindromes = list(filter(lambda word: word == word[::-1], dromes))
+print(palindromes) 
+
+#REDUCE bola de nieve
+#EXMOXNIX DAME FUERZAAAA
+
+from functools import reduce
+# import functools.reduce //otra forma de llamar
+
+nums = [3, 4, 6, 9, 34, 12]
+
+# valor inicial
+from functools import reduce
+nums = [3, 4, 6, 9, 34, 12]
+
+def custom_sum(first, second):
+    # print("primer elemento: ", first)
+    # print("segundo elemento: ", second)
+    # print("")
+    return first + second
+
+result = reduce(custom_sum, nums, 100) #valor inicial
+print(result)
+
+#------ update va sumando del dicc incial cada uno de los dic 
+dicts = [{'a': 1}, {'b': 2}, {'a': 3}, {'c': 4}]
+print(dicts)
+
+# Función para hacer merge de dos diccionarios
+def merge_dicts(d1, d2):
+    d1.update(d2)
+    # print("primer elemento: ", d1)
+    # print("segundo elemento: ", d2)
+    # print("")
+    return d1
+
+result = reduce(merge_dicts, dicts, {'e':100, 'f':200 ,'g':300})
+print(result)
+
+#--------------------------------
+# Ventas por regiones
+ventas_lista = [
+    {'Norte': 100, 'Sur': 150, 'Este': 200},
+    {'Norte': 50, 'Sur': 60, 'Oeste': 70},
+    {'Este': 30, 'Oeste': 40, 'Sur': 80},
+    {'Sur': 20}
+]
+
+venta_default = {'Norte': 0, 'Sur': 0, 'Este': 0, 'Oeste': 0, 'Central': 0}
+
+#REPASAR
+# Función para combinar diccionarios
+def combine_sales(ventas_1, ventas_2):
+    combined = ventas_1.copy() # copiar
+    for key, value in ventas_2.items():
+        combined[key] = combined.get(key,0) + value
+        print(combined[key])
+    return combined
+
+# Usar reduce para combinar todos
+#reduce(funcion, iterable, inicial) ese es el detalle
+total_sales = reduce(combine_sales, ventas_lista, venta_default)
+print(total_sales)
+
+# VI GENERADORES
+import sys
+nums_squared_lc = [i**2 for i in range(5)]
+sys.getsizeof(nums_squared_lc) # devuelve el tamaño en bytes de un objeto
+
+nums_squared_gc = (i**2 for i in range(5)) # cambiar por números más grandes
+sys.getsizeof(nums_squared_gc)
+
+#una forma d ellamar la otra por for 
+next(nums_squared_gc)
+
+###Generador con yield
+## se corta al acabar
+
+#uso de yield para generar cuadrados
+def genera_cuadrados(n):
+    for i in range(1, n + 1):
+        yield i**2
+
+for num in genera_cuadrados(4):
+    print(num)
+###############################################
+# yield en lectura de archivos
+def procesar_linea(mi_lin):
+  print(len(mi_lin))
+  print(mi_lin)
+#__________________________________________
+### sin yield
+def leer_archivo_total(nombre_archivo):
+    with open(nombre_archivo, 'r') as archivo:
+        contenido = archivo.readlines() #sin s es linea por linea
+    return contenido
+
+# Uso de la función
+logs = leer_archivo_total('cc_datos.txt')
+for linea in logs: #de aqui sale LINEA de linea 252
+    procesar_linea(linea)
+#-----------------------------------------
+#### con yield 
+
+def leer_archivo_iter(nombre_archivo):
+    with open(nombre_archivo, 'r') as archivo:
+        while True:
+            contenido = archivo.readline()
+            if not linea:
+                break
+            yield contenido 
+"""
+def leer_archivo_iter(nombre_archivo):
+    with open(nombre_archivo, 'r') as archivo:
+        for contenido in archivo:
+            yield contenido
+"""
+
+# Supón que tenemos un archivo grande llamado "datos.txt"
+for linea in leer_archivo_iter('cc_datos.txt'):
+    procesar_linea(linea)
