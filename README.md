@@ -325,6 +325,91 @@ class familia:
 ✔ Estado > resultado  
 ✔ Pensar > codear  
 
+# lambda y slicing en [: :]
+ids = ['id1', 'id2', 'id30', 'id3', 'id22', 'id100']
+sorted_ids = sorted(ids, key=lambda x: int(x[2:])) # orden (sort) según parte entera
+print(sorted_ids)
+
+
+# Ventas por regiones (for+2 / reduce)
+ventas_lista = [
+    {'Norte': 100, 'Sur': 150, 'Este': 200},
+    {'Norte': 50, 'Sur': 60, 'Oeste': 70},
+    {'Este': 30, 'Oeste': 40, 'Sur': 80},
+    {'Sur': 20}
+]
+
+venta_default = {'Norte': 0, 'Sur': 0, 'Este': 0, 'Oeste': 0, 'Central': 0}
+
+from functools import reduce
+
+## sin reduce 2 +for----------------
+
+venta_default_l1 = {'Norte': 0, 'Sur': 0, 'Este': 0, 'Oeste': 0, 'Central': 0}
+def merch_dicc(l1,l2):
+    copia = l1.copy()
+    for dicc in l2:
+        print(f"1er for {dicc}\n")
+        for key, value in dicc.items():
+            print(key,value)
+            copia[key] = copia.get(key,0) + value  
+            print(f" 2do for key = {key} : {copia}")
+        print("\n")
+    return copia
+merch_dicc(venta_default_l1, ventas_lista_l2)
+
+print(f"rpt final {venta_default_l1} \n")
+
+#  con REDUCE--------------------------------
+print(f"incio metodo reduce \n")
+from functools import reduce
+
+def merch_dicc2 (l1,l2):
+        copia2 = l1.copy()
+        for key, value in l2.items():
+            print(key,value) 
+            copia2[key] = copia2.get(key,0) + value  
+            print(f" 2do for key = {key} : {copia2}")
+        print("\n")
+        return copia2 
+
+resultado = reduce(merch_dicc2, ventas_lista_l2, venta_default_l1)
+print(resultado)  
+
+
+# zip + list comprenhension
+
+listas = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+
+sum_gpt = [x+y+z for x,y,z in zip(*listas)]
+sum_gpt_1 = [sum(values)for values in zip(*listas)]
+print(sum_gpt)
+print(sum_gpt_1)
+
+print()
+
+
+# Aperturar archivos/ yield
+def open_cvs(archivo):
+    with open (archivo, "r") as archivo:
+        while True:
+            contenido = archivo.readline()
+            if not contenido:
+                break
+            yield contenido
+lineas = open_cvs("tec.csv")
+
+for linea in lineas:
+    print(len(linea))
+    print(linea)
+
+
+
+
 ---
 
 # 🚀 SIGUIENTES PASOS (MASTER PRODUCTION)
