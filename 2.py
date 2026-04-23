@@ -336,3 +336,5 @@ def edad(self, valor):
     self._edad = valor 
 
 #ver solucionario de lab2
+
+# 22 /04 clase 08 FINALIZADA
