@@ -262,3 +262,77 @@ def leer_archivo_iter(nombre_archivo):
 # Supón que tenemos un archivo grande llamado "datos.txt"
 for linea in leer_archivo_iter('cc_datos.txt'):
     procesar_linea(linea)
+
+# 22 /04 clase 08, training actializado
+
+#Forma más breve (aprovecha que en C, ya se ha preconfigurado para leer por línea)
+def leer_archivo_iter(nombre_archivo):
+    with open(nombre_archivo, 'r') as archivo:
+        yield from archivo
+
+#Caso integrador------------------------------
+
+#ejemplo lectura de csv
+file_name = "tec.csv"
+lines = (line for line in open(file_name)) #generador
+list_line = (s.rstrip().split(",") for s in lines) #quita espacio derechoi y separa por , genera una lista
+cols = next(list_line) #guardar columnas
+company_dicts = (dict(zip(cols, data)) for data in list_line) #junta cols con data 
+
+print(company_dicts) ##### generar repaso
+funding = (int(company_dict["raisedAmt"]) for company_dict in company_dicts if company_dict["round"] == "a") #filtro
+total_series_a = sum(funding) #sum
+print(total_series_a)
+
+#VII DECORADORES---------------------------------------
+def repite_2(func):
+    def wrapper_repite_plus(*args, **kwargs):
+        func(*args, **kwargs)
+        func(*args, **kwargs)
+    return wrapper_repite_plus
+
+@repite_2
+def greet(name):
+    print(f"Hola {name}")
+
+greet("Narda")
+
+#example 2
+# Con decorador
+import functools
+import time
+
+def ralentiza(func):
+    """dormir 1 segundo antes de llamar cada bucle de uso de la función"""
+    @functools.wraps(func) #salvaguarda para evitar errores
+    def wrapper_ralentiza(*args, **kwargs):
+        time.sleep(1)
+        return func(*args, **kwargs) #llama funcion
+    return wrapper_ralentiza
+
+@ralentiza
+def conteo(num_arranque):
+    if num_arranque < 1:
+        print("¡Despegue!")
+    else:
+        print(num_arranque)
+        conteo(num_arranque - 1)
+#shadow libreris 
+
+#ejemplo de class y decoradores
+
+# Encapsulación: para ellos se usa un setter y un getter
+  # En Python, como en otros lenguajes, se marca con "_" antes del nombre
+    # Pero, a diferencia de otros lenguajes de POO, no es prohibición
+    # sino convención y sugerencia.
+@property
+def edad(self):
+    return self._edad
+
+@edad.setter
+def edad(self, valor):
+    if valor < 0:
+      raise ValueError("La edad no puede ser negativa")
+    self._edad = valor 
+
+#ver solucionario de lab2

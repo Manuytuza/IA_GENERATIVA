@@ -114,8 +114,7 @@ def decorade(func):
     return wrapper
 
 @decorade
-def suma(x,y,n):
-    
+def suma(x,y,n):   
     return f"{x+y} es la edad de {n}"
 
 suma(22,45 ,n = "manu")
