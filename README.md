@@ -61,9 +61,9 @@ def f(a):
 ## 🔤 STRINGS (INMUTABLES)
 ```python
 texto = " manuel ytuza "
-texto = texto.strip()
-lista = texto.split()
-nuevo = ",".join(lista)
+texto = texto.strip() # "manuel ytuza"
+lista = texto.split() #["manuel", "ytuza"]
+nuevo = ",".join(lista)  # "manuel,ytuza"
 ```
 ✔ no cambian → reasignar  
 
@@ -407,8 +407,37 @@ for linea in lineas:
     print(len(linea))
     print(linea)
 
+#Caso integrador------------------------------
+
+#ejemplo lectura de csv
+file_name = "tec.csv"
+lines = (line for line in open(file_name)) #generador
+list_line = (s.rstrip().split(",") for s in lines) #quita espacio derechoi y separa por , genera una lista
+cols = next(list_line) #guardar columnas
+company_dicts = (dict(zip(cols, data)) for data in list_line) #junta cols con data 
+
+print(company_dicts) ##### generar repaso
+funding = (int(company_dict["raisedAmt"]) for company_dict in company_dicts if company_dict["round"] == "a") #filtro
+total_series_a = sum(funding) #sum
+print(total_series_a)
+
+#VII DECORADORES---------------------------------------
+def repite_2(func):
+    def wrapper_repite_plus(*args, **kwargs):
+        func(*args, **kwargs)
+        func(*args, **kwargs)
+    return wrapper_repite_plus
+
+@repite_2
+def greet(name):
+    print(f"Hola {name}")
+
+greet("Narda")
 
 
+for linea in lineas:
+    print(len(linea))
+    print(linea)
 ---
 
 # 🚀 SIGUIENTES PASOS (MASTER PRODUCTION)

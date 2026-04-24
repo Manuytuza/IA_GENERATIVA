@@ -305,3 +305,17 @@ for linea in lineas:
 
 
 ### fin remoto 21/04
+
+import pandas as pd
+
+df = pd.read_csv("tec.csv")
+
+print(df.head())
+
+print(df.raisedAmt.sum())
+
+filtro = df["company"].str.startswith("a", na=False)
+resultado = df.loc[filtro, "raisedAmt"].sum()
+
+print(resultado)
+#repaso pandas

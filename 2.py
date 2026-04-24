@@ -338,3 +338,4 @@ def edad(self, valor):
 #ver solucionario de lab2
 
 # 22 /04 clase 08 FINALIZADA
+# 23/04 pequeño repaso , mañana tenemos clase 09. tarea enviada
