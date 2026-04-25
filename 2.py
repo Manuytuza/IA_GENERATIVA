@@ -10,6 +10,7 @@ class PerroCasero:
 # atributos
     especie = 'canis familiaris'
     patas = 4
+  
 
     # inicializador
     def __init__(self, nombre, edad):
