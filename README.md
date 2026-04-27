@@ -421,7 +421,7 @@ funding = (int(company_dict["raisedAmt"]) for company_dict in company_dicts if c
 total_series_a = sum(funding) #sum
 print(total_series_a)
 
-#VII DECORADORES---------------------------------------
+# VII DECORADORES---------------------------------------
 def repite_2(func):
     def wrapper_repite_plus(*args, **kwargs):
         func(*args, **kwargs)
@@ -439,6 +439,15 @@ for linea in lineas:
     print(len(linea))
     print(linea)
 ---
+# class 09 
+
+
+
+
+
+
+
+
 
 # 🚀 SIGUIENTES PASOS (MASTER PRODUCTION)
 

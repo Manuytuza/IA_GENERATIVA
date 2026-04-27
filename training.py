@@ -299,9 +299,9 @@ def open_cvs(archivo):
             yield contenido
 lineas = open_cvs("tec.csv")
 
-for linea in lineas:
-    print(len(linea))
-    print(linea)
+#for linea in lineas:
+    #print(len(linea))
+    #print(linea)
 
 
 ### fin remoto 21/04
@@ -318,4 +318,29 @@ filtro = df["company"].str.startswith("a", na=False)
 resultado = df.loc[filtro, "raisedAmt"].sum()
 
 print(resultado)
-#repaso pandas
+#repaso pandas 
+#repaso clase 09 
+
+print()
+with open("tec.csv", "r") as libro:
+    encabezados = next(libro)
+    print(encabezados)
+
+    lineas = libro.readline()
+    print(lineas)
+
+    for i, linea in enumerate(libro):
+        if i == 5:
+            break
+    
+
+        print(i, linea.strip().upper())
+
+print()
+import pandas as pd 
+
+df1 = pd.read_csv("tec.csv", index_col = "permalink") #index_col: define indix de columnas 
+
+print(df1.head())
+print(df1.columns)
+print(df1.values)
