@@ -4,20 +4,20 @@ import requests #permite conectar con servidores
 download_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/nba-elo/nbaallelo.csv"
 target_csv_path = "nba_all_elo.csv"
 
-response = requests.get(download_url)
-response.raise_for_status()
+response = requests.get(download_url) #solicita archivo de guarda en variable
+response.raise_for_status() #valida error sino se omite
 
-with open(target_csv_path, "wb") as f:
-    f.write(response.content)
+with open(target_csv_path, "wb") as f: #datos en binario
+    f.write(response.content) #llama a todo el contenido
 print("Download ready.")
 
 #recordar parsing en fechas para pasar de str a fecha 
 import pandas as pd
 nba = pd.read_csv("nba_all_elo.csv")
-print("shape: ", nba.shape)
-print(nba.head(10))
+print("shape: ", nba.shape) #filas y columnas
+print(nba.head(10)) #imprime primeros 10
 
-print('temporadas: ', nba['year_id'].unique())
+print('temporadas: ', nba['year_id'].unique()) #imprime datos unicos d ecolumna year_id
 print('posibles resultados: ', nba['game_result'].unique())
 print('ligas: ', nba['lg_id'].unique())
 
@@ -54,7 +54,7 @@ print(nba.loc[nba["team_id"] == "MNL", ["date_game"] ].agg(["min", "max"]))
 print("parsing, pd.to_datetime")
 ##parsing
 # convertir a formato estándar de fecha
-nba['date_game_std'] = pd.to_datetime(nba['date_game']) #si existe chanco y si no creo, ahora crea
+nba['date_game_std'] = pd.to_datetime(nba['date_game']) #si existe chanco y si no creo, ahora crea y cporrije fechas
 print(nba.loc[nba["team_id"] == "MNL", "date_game_std"].agg( ["min", "max"] ))
 
 #df["nueva_fecha"] = df["fecha"].dt.strftime("%d/%m/%Y") , permite editar 
@@ -62,6 +62,7 @@ print(nba.loc[nba["team_id"] == "MNL", "date_game_std"].agg( ["min", "max"] ))
 #cuantos puntos hicieron los Boston Celtics
 nba.loc[nba["team_id"] == "BOS", ["pts"] ].sum()
 
+print("axes----")
 #ejes del dataframe
 print(nba.axes[1]) #== nba.columns
 print(nba.axes) #== nba.index
@@ -107,6 +108,8 @@ print(len(the_2000s))
 
 #variable con notes
 games_with_notes = nba[nba["notes"].notnull()] #NOT NULL no es vacio, is null es vacio
+
+print("aqui isnull")
 print(games_with_notes.shape)
 print(games_with_notes['notes'])
 
