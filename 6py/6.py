@@ -156,7 +156,7 @@ plt.show()
 tips = sns.load_dataset('tips')
 tips.head()
 
-#scatter
+#scatterplot (nube de puntos)
 sns.scatterplot(data=tips,
                 x='total_bill', y='tip')
 
@@ -166,7 +166,7 @@ plt.show()
 #Histplot
 # Crear un gráfico displot
 sns.histplot(data=tips, x='total_bill',
-             kde=True, #grafico de curva
+             kde=True, #grafico de curva sobre
              bins='auto'
              )
 plt.title('Distribución del Total de la Cuenta')
@@ -181,7 +181,126 @@ alternativa (pronto será inválida): sns.distplot()"""
 sns.displot(data=tips,
             x='total_bill',
             kind='hist', # hist (defeault), ecdf, kde
-            kde=True
+            kde=True #solo se usa en hist, los demas False o no corren
             )
 plt.title('Distribución del Total de la Cuenta')
+plt.show()
+
+## clase 08/05
+
+#Plots de distribución multivariable
+sns.scatterplot(data=tips,
+                x='total_bill'
+                , y='tip'
+                )
+plt.title('Propina vs Total de la Cuenta')
+plt.show()
+
+#Jointplot
+# Crear un gráfico jointplot
+sns.jointplot(data=tips,
+              x='total_bill', y='tip')
+plt.show()
+
+#Relplot: para scatter y line
+sns.relplot(data=tips,
+            x='total_bill', y='tip',
+            kind='scatter', # opciones: scatter (default) y line
+            style='time',
+            size='size',
+            hue='smoker'
+            )
+plt.show()
+
+sns.relplot(data=tips,
+            x='day', y='total_bill',
+            kind = 'line',
+            errorbar=(None) # probar con 'ci' y None
+            )
+plt.show()
+
+#Regplot para regresión, incluye línea de ajuste por defecto
+
+# Crear un gráfico de regresión
+sns.regplot(data=tips,
+            x='total_bill',
+            y='tip'
+            )
+
+plt.title('Propina vs Total de la Cuenta') #permite ver como van los puntos 
+plt.show()
+
+##Pairplot
+#matriz de gráficos entre varias variables
+
+# Crear un gráfico pairplot, varios graficos int y float columns se consideran
+sns.pairplot(tips)
+plt.show()
+
+# Usar parámetro hue (usa var categórica)
+sns.pairplot(tips,
+             hue='sex')
+plt.show()
+
+##Heatmap, primero se optime correlaciones
+
+# Requiere seleccionar solo columnas numéricas
+numeric_tips = tips.select_dtypes(include='number') #solo "number"
+
+corr = numeric_tips.corr() # Crear la matriz de correlación
+
+# Crear un gráfico heatmap
+sns.heatmap(corr, cmap='coolwarm', annot=True) #revisar esto
+plt.title('Matriz de Correlación')
+plt.show()
+
+##Plots de categorización
+
+# Crear un gráfico barplot
+sns.barplot(data=tips,
+            x='day', y='total_bill')
+
+plt.title('Total de la Cuenta por Día')
+
+plt.show()
+
+##Countplot, una sola variable
+
+# Crear un gráfico countplot
+sns.countplot(data=tips,
+              x='day')
+plt.title('Conteo de Observaciones por Día')
+plt.show()
+
+##Boxplot, Para la distribución de una variable numérica a través de cuartiles.
+
+# Crear un gráfico boxplot
+sns.boxplot(data=tips,
+            x='day', y='total_bill')
+
+plt.title('Distribución del Total de la Cuenta por Día')
+plt.show()
+
+#Swarmplot similar al violinplot, pero, en lugar de la distribución, muestra los puntos de datos individuales
+
+# Crear un gráfico swarmplot
+sns.swarmplot(data=tips,
+              x='day', y='total_bill')
+plt.title('Distribución del Total de la Cuenta por Día')
+plt.show()
+#Catplot: generaliza para varios tipos de gráficos categóricos
+#incluye: 'strip', 'swarm', 'box', 'violin', 'boxen', 'point', 'bar', 'count'
+
+sns.catplot(data=tips,
+            kind='count',
+            x='day')
+plt.show()
+
+#Estilos  opciones: dark, darkgrid, ticks, whitegrid,
+
+sns.set_style("ticks") #se guarda pára tod lo que sigue
+sns.countplot(data=tips, x='smoker')
+plt.show()
+sns.set_context("talk") # paper, notebook, talk, poster
+sns.countplot(data=tips, x='day')
 plt.show()
