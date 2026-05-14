@@ -304,3 +304,6 @@ plt.show()
 sns.set_context("talk") # paper, notebook, talk, poster
 sns.countplot(data=tips, x='day')
 plt.show()
+
+#The invisible gorilla --leer
+ 

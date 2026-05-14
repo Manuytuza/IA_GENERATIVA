@@ -403,3 +403,28 @@ grid = gridplot([[pctFig, totFig]])
 
 # Visualizar
 show(grid)
+
+##incio clase 13/05 gapminder.tsv
+#tsv no tiene comas
+#usar descript para ver bien los datos de dataframe
+
+#terminar de hacer lab de bokeh
+#seguir con plotly
+
+# alternativa: usar lista pero directamente en .Figure()
+#plot basico
+import plotly.graph_objects as go
+import numpy as np
+
+fig = go.Figure(data=[go.Scatter(x=random_x, y=random_y0,
+                            mode='markers',
+                            name='markers'),
+                 go.Scatter(x=random_x, y=random_y1,
+                            mode='lines+markers',
+                            name='lines+markers'),
+                 go.Scatter(x=random_x, y=random_y2,
+                            mode='lines',
+                            name='lines')
+                 ])
+fig.show()
+
