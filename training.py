@@ -299,9 +299,9 @@ def open_cvs(archivo):
             yield contenido
 lineas = open_cvs("tec.csv")
 
-#for linea in lineas:
-    #print(len(linea))
-    #print(linea)
+for linea in lineas:
+    print(len(linea))
+    print(linea)
 
 
 ### fin remoto 21/04
