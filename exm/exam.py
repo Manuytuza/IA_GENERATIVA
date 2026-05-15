@@ -179,7 +179,7 @@ datos = {
 }
 
 df = pd.DataFrame(datos)
-
+df.to_csv("datos.csv", index=False)
 print("\nDATAFRAME:")
 print(df)
 
@@ -204,6 +204,8 @@ print(df.dtypes)
 print("\nINFO GENERAL:")
 print(df.info())
 
+#(filas, columnas)
+print(df.shape)
 
 # ==========================================================
 # 7. SELECCIÓN DE DATOS
@@ -239,7 +241,7 @@ print(filtro)
 
 # Detectar vacíos
 print("\nDETECTAR VACÍOS:")
-print(df.isnull())
+print(df.isnull()) 
 
 # Contar vacíos
 print("\nCONTAR VACÍOS:")
