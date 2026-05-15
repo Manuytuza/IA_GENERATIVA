@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -146,4 +145,4 @@ axs[2,1].axis("off")
 plt.tight_layout() #ordena graficos evita que se sobrepongan
 fig.suptitle("Todos los gráficos\n")
 fig.subplots_adjust(top=0.90)#separa titulos de grafics
-plt.show()
+plt.show() 
