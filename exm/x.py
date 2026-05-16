@@ -134,7 +134,7 @@ df.plot(
 )
 # PIE
 grupo.plot(
-    kind="pie",
+    kind="pie", 
     autopct="%1.1f%%",
     ax=axs[2,0],
     title="pie grafic"
