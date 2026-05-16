@@ -428,3 +428,17 @@ fig = go.Figure(data=[go.Scatter(x=random_x, y=random_y0,
                  ])
 fig.show()
 
+### seguimos 15 de mayo con todo
+
+"""
+Hover (flotación)
+
+Parámetro	Descripción	Ejemplo / Valores posibles
+hovertext	Configura el texto a mostrar en el hover	['27% market share', '24%', '19%']
+hoverinfo	Campos que se muestran en la tarjeta	'x', 'y', 'text', 'name', 'z', 'all', 'none'
+hoverlabel	Estilo visual del hover	dict(bgcolor='lightblue', font_size=14, font_family='Arial', bordercolor='gray')
+hovertemplate	Plantilla personalizada para el hover	'Category: %{x}<br>Sales: %{y}<br>%{hovertext}<extra></extra>'
+nota: si la información viene de ColumnDataSource o una fuente externa, usar: hovertextsrc, hoverinfosrc, hovertemplatesrc
+"""
+#https://colab.research.google.com/drive/1y5eU9xiSfoGyVD29Dn5PL8tL0Tp1j47_?usp=sharing
+# antiguo colap bokeh https://colab.research.google.com/drive/15-ZUUp3IzqYJqpYp0y5K2bklA3Cp-XUG?usp=sharing
