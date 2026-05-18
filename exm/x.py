@@ -50,11 +50,11 @@ print(np.min(matriz))
 
 ###---------------------------------------
 #df = pd.DataFrame(datos) 
-df = pd.read_csv("datos.csv")
+df = pd.read_csv("datos.csv") #cargar csv
 # Información general
 #print(df.columns)
 print("\nINFO GENERAL:")
-print(df.info()) 
+print(df.info()) #columnas, non-null, type columns
 #(filas, columnas)
 print(df.shape)
 
@@ -63,15 +63,15 @@ print("\nPRIMERA FILA:")
 print(df.iloc[0]) 
 # df.iloc[fila, columna]
 # mascara boleana = Filtrar ventas mayores a 150
-filtro = df[df["Ventas"] > 150] 
+filtro = df[df["Ventas"] > 150] #boolean masc
 print(filtro)
 # Contar vacíos
-print(df.isnull().sum())
+print(df.isnull().sum()) #sum of nulls for columns
 # Reemplazar vacíos por (0)
-df["Edad"] = df["Edad"].fillna(0)
+df["Edad"] = df["Edad"].fillna(0) #change nan for (x)
 
 #ordenar sort_value("segun_esto")
-ordenado = df.sort_values("Ventas")
+ordenado = df.sort_values("Ventas") 
 #crear new column 
 df["IGV"] = df["Ventas"] * 0.18
 print(df)
@@ -122,7 +122,10 @@ plt.ylabel("Ventas")
 df["Ventas"].plot(
     kind="hist",
     ax=axs[1,0],
-    title="histograma"
+    title="histograma",
+    grid=True,
+    xlabel="hola_horizontal",
+    ylabel="vertical",
 )
 # SCATTER
 df.plot(
@@ -130,19 +133,327 @@ df.plot(
     x="Ventas",
     y="Gastos",
     ax=axs[1,1],
-    title="scatter"
+    title="scatter",
+    grid=True,
+    xlabel="hola_horizontal",
+    ylabel="vertical",
 )
 # PIE
 grupo.plot(
     kind="pie", 
     autopct="%1.1f%%",
     ax=axs[2,0],
-    title="pie grafic"
+    title="pie grafic",
 )
-# Espacio vacío
+# Dtermina el Espacio vacío en fig, axs
 axs[2,1].axis("off")
 
 plt.tight_layout() #ordena graficos evita que se sobrepongan
 fig.suptitle("Todos los gráficos\n")
 fig.subplots_adjust(top=0.90)#separa titulos de grafics
 plt.show() 
+"""
+df["New"] = np.where(
+    df["Ventas"] != 0,
+    df["Edad"] / df["Ventas"],
+    0
+)
+np.where(condición, valor_si_true, valor_si_false)
+"""
+# ==============================
+# RESUMEN RÁPIDO SEABORN (sns)
+# ==============================
+
+# IMPORTS
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# ------------------------------
+# DATASET
+# ------------------------------
+
+tips = sns.load_dataset("tips")
+
+# ver datos
+tips.head()
+
+# columnas
+tips.columns
+
+# info
+tips.info()
+
+
+# ==============================
+# GRÁFICOS PRINCIPALES
+# ==============================
+
+# --------------------------------
+# 1. SCATTERPLOT
+# relación entre 2 variables
+# --------------------------------
+
+sns.scatterplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+plt.show()
+
+
+# --------------------------------
+# 2. LINEPLOT
+# líneas / tendencias
+# --------------------------------
+
+sns.lineplot(
+    data=tips,
+    x="size",
+    y="tip"
+)
+
+plt.show()
+
+
+# --------------------------------
+# 3. BARPLOT
+# categorías vs promedio
+# --------------------------------
+
+sns.barplot(
+    data=tips,
+    x="day",
+    y="total_bill"
+)
+
+plt.show()
+
+
+# --------------------------------
+# 4. HISTPLOT
+# distribución
+# --------------------------------
+
+sns.histplot(
+    data=tips,
+    x="total_bill",
+    bins=10
+)
+
+plt.show()
+
+
+# --------------------------------
+# 5. BOXPLOT
+# cuartiles y outliers
+# --------------------------------
+
+sns.boxplot(
+    data=tips,
+    x="day",
+    y="total_bill"
+)
+
+plt.show()
+
+
+# --------------------------------
+# 6. VIOLINPLOT
+# distribución avanzada
+# --------------------------------
+
+sns.violinplot(
+    data=tips,
+    x="day",
+    y="total_bill"
+)
+
+plt.show()
+
+
+# --------------------------------
+# 7. COUNTPLOT
+# contar categorías
+# --------------------------------
+
+sns.countplot(
+    data=tips,
+    x="day"
+)
+
+plt.show()
+
+
+# --------------------------------
+# 8. HEATMAP
+# matriz de correlación
+# --------------------------------
+
+corr = tips.corr(numeric_only=True)
+
+sns.heatmap(
+    corr,
+    annot=True
+)
+
+plt.show()
+
+
+# ==============================
+# PARÁMETROS IMPORTANTES
+# ==============================
+
+# hue     -> color por categoría
+# style   -> estilo
+# bins    -> divisiones histograma
+# palette -> colores
+# annot   -> mostrar números
+# figsize -> tamaño figura
+
+
+# ==============================
+# FIG Y AXS
+# ==============================
+
+fig, axs = plt.subplots(1, 2)
+
+sns.scatterplot(
+    data=tips,
+    x="total_bill",
+    y="tip",
+    ax=axs[0]
+)
+
+sns.histplot(
+    data=tips,
+    x="total_bill",
+    ax=axs[1]
+)
+
+plt.tight_layout()
+plt.show()
+
+
+# ==============================
+# ESTILOS
+# ==============================
+
+sns.set_style("darkgrid")
+
+# opciones:
+# darkgrid
+# whitegrid
+# dark
+# white
+# ticks
+
+
+# ==============================
+# CONCEPTOS CLAVE
+# ==============================
+
+# scatterplot -> relación
+# histplot    -> distribución
+# barplot     -> promedio
+# countplot   -> conteo
+# boxplot     -> outliers
+# heatmap     -> correlación
+
+
+##Labs old 
+## estuctura num primos
+cantidad = 5
+prime = []
+num = 2
+while len(prime) < cantidad:
+    es_primo = True
+    for i in range(2, num):
+        if num % i == 0:
+            es_primo = False
+            break
+    if es_primo:
+        prime.append(num)
+    num += 1
+print(prime)
+
+#game random
+# 2 BUCLE: crea un código para adivinar un número generado al azar
+  # Al inicio deberá pedirse al usuario adivinar un número en un rango del 1 al 20
+    # El mensaje debe decir: "Elige un número del 1 al 20"
+  # Para cada turno en que el usuario adivine, se deberá responder:
+    # "el número real es mayor"
+    # "el número real es menor"
+  # Cuando acierte, deberá respondérsele "ACERTASTE"
+# usar la librería random y el comando random.randint() para generar el número a adivinar
+
+import random
+
+num_oculto = random.randint(1,20)
+
+turno = 0
+
+while turno < 4:
+    """
+    Se utilizó apoyo de ChatGPT para comprender la correcta ubicación del
+    bloque try/except.
+    """
+    try: #ingresamos try en bucle while para no deterner el proceso
+        num_user = int(input("Elige un número del 1 al 20, tiene 4 turnos: "))
+    except ValueError:
+        print("ingresa un numero")
+        continue
+
+    if num_user > 20 or num_user < 1: #filtro de rango establecido
+      print("el rango es de 1 a 20")
+      continue
+
+    if num_oculto == num_user:
+        print(f"ACERTASTE el numero es {num_oculto}")
+        break #si aciertas se detiene el bucle
+    elif num_oculto > num_user:
+        print("El número real es mayor")
+    else:
+        print("El número real es menor")
+
+    turno += 1 #aumentamos el contador_turno en cada vuelta
+
+    if turno < 4:
+      print("Te quedan", 4 - turno, "turnos")
+
+if turno == 4 and num_oculto != num_user:
+    print(f"Finalizaron los 4 turnos el numero es {num_oculto}")
+
+# Funciones
+# Crear una función que calcule el número de mayúsculas y minúsculas de una cadena (string)
+  # tip: usar los métodos islower(), isupper()
+
+var = input("ingresa un string : ")
+
+def contador(var):
+  minuscula = 0
+  mayuscula = 0
+
+  for n in var:
+    if n.islower(): #minuscula
+      minuscula +=1
+    elif n.isupper():#mayuscula
+      mayuscula +=1
+    else:
+      continue
+
+  print(f"minusculas : {minuscula}")
+  print(f"mayusculas : {mayuscula}")
+
+contador(var)
+
+
+
+lc4 = [value for index,value in enumerate(lc1) if value not in lc1[:index] ] #index compara hasta index evaluado
+
+
+# ¿Cómo elimino duplicados?
+# output esperado "MAYUSCLO"
+lc1 = "MAYUSCULASO"
+lc4 = [value for index,value in enumerate(lc1) if value not in lc1[:index] ] #index compara hasta index evaluado
+print(f"Con list comprenhencion-Funcional {lc4}") 
