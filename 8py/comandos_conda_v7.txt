@@ -1,0 +1,155 @@
+
+
+[en Anaconda Prompt, o CMD]
+
+####################
+# DEFINICIONES
+####################
+# mostrar la versión
+conda --version
+
+# mostrar información
+conda info
+
+# mostrar entornos
+conda info --envs
+
+# Ayuda sobre comandos: --help  (listamos solo 3 ejemplos)
+conda --help
+conda activate --help
+docker build --help
+
+####################
+# LISTAR
+####################
+
+# listar entornos
+conda env list
+conda info --envs
+
+# listar paquetes
+conda list
+
+# listar paquetes con regex
+conda list ^py
+
+# listar todos los ambientes que contengan una biblioteca
+conda search scikit-learn
+
+####################
+# MANEJAR ENTORNOS
+####################
+
+# crear
+conda create -n <nombre_de_mi_env> python=<version_de_python>
+conda create -n PFML_e1 python=3.13
+
+	# nota: en windows se creará en C:\Users\<tu_usuario>\miniconda3\envs
+
+# activar
+conda activate <nombre_del_env_creado>
+conda activate PFML_e1
+
+# activar el entorno base
+conda activate
+
+# desactivar
+conda deactivate PFMLe1
+
+# eliminar un entorno
+conda env remove -n <nombre_entorno>
+
+
+####################
+# EXPORTAR/IMPORTAR
+####################
+
+EXPORTAR PARA MISMO OS  
+# exportar a .txt (facilita edición)
+conda list --export > requirements.txt
+
+# exportar paquetes de un entorno (más exactitud) para mismo OS
+conda env export > environment.yml
+conda env export -n <NOMBRE_ENV>  > environment.yml
+
+
+EXPORTAR PARA PORTABILIDAD A DISTINTOS OS
+# exportar solo los paquetes especificados del ambiente actual (más portabilidad)
+conda env export --from-history > environment.yml
+# para las dependencias instaladas con pip
+pip list --format=freeze > pip_requirements.txt
+
+
+IMPORTAR A ENTORNO NUEVO QUE SE CREA EN EL MOMENTO
+# importar entorno desde YML
+conda env create --name <ENV_NUEVO> --file mis_requirements.yml
+
+# importar a ambiente desde txt 
+conda create --name <ENV_NUEVO> --file mis_requirements.txt
+
+
+IMPORTAR A ENTORNO PREVIAMENTE CREADO
+# con yml (nota "--prune" hace una poda de los paquetes previos que podrían causar conflicto)
+conda env update -n <ENV_DE_DESTINO> -f environment.yml --prune
+
+# con txt
+conda install -n <ENV_DE_DESTINO> --file paquetes.txt
+
+
+
+####################
+# INSTALAR PAQUETES
+####################
+
+# instalar bibliotecas 
+conda install numpy pandas matplotlib scipy scikit-learn jupyter
+
+# instalar versiones específicas
+conda install scipy=1.10.1
+
+# instalar en un entorno sin activarlo
+conda install --name <nombre_del_entorno> scipy
+
+# desinstalar ("uninstall" es un alias de "remove")
+conda remove pycaret
+conda uninstall pycaret
+
+# actualizar 
+conda update numpy
+conda update --all
+
+# actualizar conda mismo
+conda update conda
+
+
+####################
+# LANZAR JUPYTER 
+####################
+
+# lanzar jupyter lab o jupyter notebook
+jupyter lab 
+jupyter notebook
+
+# lanzar especificando un browser
+jupyter notebook --browser=edge
+
+# crear y usar un archivo de configuración
+jupyter notebook --generate-config
+	# nota: crea un archivo jupyter_server_config.py 
+	# está en una locación parecida C:\Users\USER\.jupyter\jupyter_server_config.py
+	# Cambio de un parámetro.
+		# ejemplo: cambiar el navegador y usar Edge para lanzar notebooks:
+			# buscar: c.ServerApp.browser = '' 
+			# cambiar por: c.ServerApp.browser = 'edge' 
+			# o, mejor, con ruta absoluta: c.ServerApp.browser = u'"C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" %s'
+	# Otros parámetros (puerto, ip, directorio de trabajo)	
+		# cambiar el puerto: c.ServerApp.port = 0
+		# cambiar la ip: c.ServerApp.ip = '0.0.0.0'
+		# cambiar el wkdir: c.ServerApp.notebook_dir=''
+		# especificar archivo de log: c.ServerApp.log_file = '/ruta/jupyter.log'
+
+
+
+##############################################################################
+Ver tambén: https://interactivechaos.com/es/recursos-educativos/comandos-conda
+##############################################################################
