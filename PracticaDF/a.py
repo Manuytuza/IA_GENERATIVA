@@ -3,13 +3,29 @@ import matplotlib.pyplot as plt
 import numpy as np 
 
 df = pd.read_csv("iadata.csv")
-print(df.tail(5))
-print(df.columns)
-print(df.info())
-print("\n")
 
-df1 = df.groupby("Domain")["Training computation (petaFLOP)"].mean().sort_values(ascending=False)
+df1 = df[df["Domain"]== "Language"]
+print(df1.describe())
 
-print(df1.columns)
-print(df1.iloc[df["Training computation (petaFLOP)"]>10000, "Domain"].men())
+df1= df1[df1["Training computation (petaFLOP)"]>3.75e+09]
 
+df1 = df1.sort_values(
+    by = "Training computation (petaFLOP)",
+    ascending = True
+)
+print(df1.shape) 
+
+df1.plot(
+    kind = "barh",
+    x="Entity", 
+    y ="Training computation (petaFLOP)",
+    #figsize=(12, 10)
+    )
+
+plt.xlabel("Training computation")
+plt.ylabel("Entity")
+plt.title("Language Models")
+plt.tight_layout()
+plt.show()
+
+df1.iloc("")
